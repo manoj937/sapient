@@ -1,0 +1,169 @@
+@mixin tab($width) {
+    .card-container{
+        padding: 5px;
+        &.col1 mat-card{
+            width: 88%;
+        }
+    }
+    .card-container.col2 mat-card{
+        width: $width;
+        margin: 5px;
+        img{
+            margin-bottom: 0;
+        }
+        .mat-list-base .mat-list-item{
+            height: 60px;
+        }
+    }
+
+    mat-toolbar img, .mat-paginator-range-actions{
+        width: 100px;
+    }
+
+    .portfolio{
+        bottom: 45px;
+    }
+}
+
+mat-toolbar{
+    display: flex;
+    justify-content: space-between;
+    img{
+        width: 160px;
+    }
+    .actions{
+        display: flex;
+        button{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10px;
+            i{
+                font-size: 21px;
+            }
+            input[type="text"] {
+                height: 40px;
+                font-size: 18px;
+                display: inline-block;
+                border: none;
+                outline: none;
+                padding-right: 40px;
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 0;
+                color: #fff;
+                background: none;
+                transition: width 0.4s cubic-bezier(0, 0.795, 0, 1);
+                &:focus:hover {
+                    border-bottom: 1px solid #BBB;
+                }
+                &:focus {
+                    width: 150px;
+                    z-index: 1;
+                    border-bottom: 1px solid #BBB;
+                    cursor: text;
+                }
+                &::placeholder{
+                    color: #aaa;
+                }
+            }
+        }
+        
+    }
+}
+
+.card-container{
+    height: calc( 100vh - 84px);
+    padding: 10px;
+    overflow: auto;
+    mat-card{
+        width: 21%;
+        float: left;
+        margin: 10px;
+        @media only screen and (min-width: 1000px) and (max-width: 1025px) {
+            margin: 4px;
+            .charId{
+                width: 100px;
+            }
+        }
+        .avatar{
+            width: 50px;
+            height: 50px;
+            img{
+                width: 100%;
+                margin: 0;
+                border-radius: 500px;
+            }
+        }
+        .mat-card-image{
+            opacity: 0.7;
+        }
+        .mat-list-base .mat-list-item{
+            h4{
+                font-size: 10px;
+            }
+            p{
+                font-size: 16px;
+                margin-top: 10px;
+                font-weight: bold;
+            }
+        }  
+    }
+}
+
+mat-paginator{
+    position: absolute;
+    top: 5px;
+    right: 135px;
+    background: transparent;
+    transition: 0.4 right;
+}
+
+.portfolio{
+    position: fixed;
+    bottom: 10px;
+    right: 5px;
+    color: #fff;
+    opacity: 0.5;
+    right: 21px;
+    font-size: 14px;
+    font-family: sans-serif;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 375px) {
+    .card-container{
+        padding: 5px;
+        &.col1 mat-card{
+            width: 88%;
+        }
+    }
+    mat-paginator{
+        right: 85px;
+    }
+    mat-toolbar .actions button{
+        margin: 0;
+    }
+    .card-container.col2 mat-card{
+        width: 84%;
+        margin: 10px;
+    }
+
+    mat-toolbar img, .mat-paginator-range-actions{
+        width: 100px;
+    }
+
+    .portfolio{
+        bottom: 45px;
+    }
+}
+
+@media only screen and (min-width: 375px) and (max-width: 600px) {
+    @include tab(38%);
+}
+
+@media only screen and (min-width: 600px) and (max-width: 1000px) {
+    @include tab(19%);
+}
+

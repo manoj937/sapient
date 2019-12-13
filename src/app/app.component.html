@@ -1,0 +1,69 @@
+<mat-toolbar color="primary">
+  <img src='assets/logo.png' alt="logo">
+  <div class="actions">
+    <button mat-icon-button>
+      <i class="fa fa-search"></i>
+      <input #search autocomplete="off" type="text" placeholder="Search by name" 
+      (focusout)='paginationMove("135px")' (focus)='paginationMove("300px")' (keyup)='searchCharacter(search)' matTooltip="Search by name">
+    </button>
+    <button mat-icon-button [matMenuTriggerFor]="menu" matTooltip="Filter by ID">
+      <i class="fa fa-filter"></i>
+    </button>
+    <mat-menu #menu="matMenu">
+      <mat-radio-group>
+        <button *ngFor="let order of filters" mat-menu-item (click)='sortCharacter($event)'>
+          <mat-radio-button [value]="order">{{order}}</mat-radio-button>
+        </button>
+      </mat-radio-group>
+    </mat-menu>
+  </div>
+</mat-toolbar>
+<div class="card-container col2">
+  <mat-card *ngFor='let character of characterResult'>
+    <mat-card-header>
+      <div class="avatar" mat-card-avatar>
+          <img [src]='character.image' [alt]='character.name'>
+      </div>
+      <mat-card-title>{{character.name}}</mat-card-title>
+      <mat-card-subtitle>
+          <span class="charId">id: {{character.id}}</span>
+          <span>Created {{dateNow - character.created.slice(0,4)}} years ago</span>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]='character.image' [alt]='character.name'>
+    <mat-card-content>
+    <mat-list>
+      <mat-list-item>
+        <h4 mat-line>STATUS</h4>
+        <p mat-line>{{character.status}}</p>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+      
+      <mat-list-item>
+        <h4 mat-line>SPECIES</h4>
+        <p mat-line>{{character.species}}</p>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+      
+      <mat-list-item>
+        <h4 mat-line>GENDER</h4>
+        <p mat-line>{{character.gender}}</p>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+      
+      <mat-list-item>
+        <h4 mat-line>ORIGIN</h4>
+        <p mat-line>{{character.origin.name}}</p>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+      
+      <mat-list-item>
+          <h4 mat-line>LAST LOCATION</h4>
+          <p mat-line>{{character.location.name}}</p>
+      </mat-list-item>
+    </mat-list>
+    </mat-card-content>
+  </mat-card>
+</div>
+<mat-paginator color="primary" [length]="characterCount" [pageSizeOptions]="[20]"></mat-paginator>
+<a href="https://mano-cv.firebaseapp.com/" class="portfolio">mano-cv.com</a>

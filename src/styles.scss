@@ -1,0 +1,49 @@
+
+@import "~@angular/material/prebuilt-themes/purple-green.css";
+@import "~font-awesome/css/font-awesome.min.css";
+
+body{
+    margin: 0;
+}
+
+.card-container{
+    background: url("./assets/bg.png") repeat fixed center;
+}
+
+.mat-card-header-text{
+    width: 75%;
+    margin-right: 0;
+    .mat-card-title{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .mat-card-subtitle{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .mat-paginator-page-size, .mat-paginator-range-label{
+        display: none !important;
+    }
+    .avatar{
+        display: none;
+    }
+    .mat-card-header-text{
+        margin: 0 !important;
+        width: 100%;
+        .mat-card-subtitle{
+            margin-top: 10px;
+            .charId{
+                width: 100px;
+            }
+        }
+    }
+    .mat-list-base .mat-list-item .mat-list-item-content{
+        padding: 0 !important;
+    }
+}
+
